@@ -1,0 +1,45 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Experiment 4</title>
+</head>
+<body style="font-family:Arial;text-align:center;">
+  <h1>Experiment 4 Dashboard</h1>
+
+  <h2>4.1 Employees</h2>
+  <button onclick="addEmp()">Add Employee</button>
+
+  <h2>4.2 Cards</h2>
+  <button onclick="addCard()">Add Card</button>
+
+  <h2>4.3 Booking</h2>
+  <button onclick="book()">Book Ticket</button>
+
+<script>
+async function addEmp(){
+  const res = await fetch('/api/employees',{
+    method:'POST',
+    headers:{'Content-Type':'application/json'},
+    body:JSON.stringify({name:"Manav",role:"Dev",salary:1000})
+  });
+  alert(await res.text());
+}
+
+async function addCard(){
+  const res = await fetch('/api/cards',{
+    method:'POST',
+    headers:{'Content-Type':'application/json'},
+    body:JSON.stringify({suit:"hearts",value:"ace",collection:"royal"})
+  });
+  alert(await res.text());
+}
+
+async function book(){
+  const res = await fetch('/api/book',{method:'POST'});
+  alert(await res.text());
+}
+</script>
+
+</body>
+</html>
